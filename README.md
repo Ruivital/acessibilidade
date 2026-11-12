@@ -3,7 +3,7 @@
 Conjunto de aplicações Android gratuitas, sem publicidade e totalmente funcionais **offline**, desenvolvidas para apoiar pessoas com deficiência visual ou baixa visão (incluindo associados da ACAPO e a comunidade em geral) nas tarefas diárias de leitura e ampliação.
 
 🌐 **Página de Transferência Direta (GitHub Pages):**  
-👉 [https://SEU_UTILIZADOR_GITHUB.github.io/acessibilidade/](https://SEU_UTILIZADOR_GITHUB.github.io/acessibilidade/)
+👉  https://ruivital.github.io/acessibilidade/
 
 ---
 
