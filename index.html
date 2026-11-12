@@ -49,7 +49,6 @@
             padding: 1.5rem;
         }
 
-        /* Link de salto para leitores de ecrã e teclado */
         .skip-link {
             position: absolute;
             top: -100px;
@@ -148,6 +147,12 @@
             color: var(--accent-blue);
         }
 
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
         .btn-download {
             display: inline-flex;
             align-items: center;
@@ -162,7 +167,7 @@
             text-decoration: none;
             border-radius: 0.75rem;
             border: 2px solid transparent;
-            transition: background-color 0.15s ease, transform 0.1s ease;
+            transition: background-color 0.15s ease;
             text-align: center;
         }
 
@@ -170,7 +175,29 @@
             background-color: var(--accent-yellow-hover);
         }
 
-        .btn-download:focus-visible {
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 3rem;
+            padding: 0.65rem 1.25rem;
+            background-color: transparent;
+            color: var(--accent-blue);
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            border: 2px solid var(--accent-blue);
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(56, 189, 248, 0.12);
+        }
+
+        .btn-download:focus-visible,
+        .btn-secondary:focus-visible {
             outline: 4px solid var(--focus-ring);
             outline-offset: 3px;
         }
@@ -246,12 +273,14 @@
                         <li>Compatível com TalkBack e navegação simplificada</li>
                     </ul>
                 </div>
-                <!-- Substituir SEU_UTILIZADOR_GITHUB pelo teu username do GitHub -->
-                <a href="https://github.com/SEU_UTILIZADOR_GITHUB/acessibilidade/releases/latest" 
-                   class="btn-download" 
-                   aria-label="Descarregar APK da aplicação LupaAcessível">
-                    Descarregar LupaAcessível (APK)
-                </a>
+                <div class="btn-group">
+                    <a href="https://raw.githubusercontent.com/Ruivital/acessibilidade/main/LupaAcessivel_Source.zip" 
+                       download="LupaAcessivel_Source.zip"
+                       class="btn-download" 
+                       aria-label="Descarregar código-fonte da aplicação LupaAcessível em formato ZIP">
+                        Descarregar LupaAcessível (ZIP)
+                    </a>
+                </div>
             </article>
 
             <!-- Cartão DocReader -->
@@ -269,12 +298,20 @@
                         <li>Interface limpa focada em acessibilidade total</li>
                     </ul>
                 </div>
-                <!-- Substituir SEU_UTILIZADOR_GITHUB pelo teu username do GitHub -->
-                <a href="https://github.com/SEU_UTILIZADOR_GITHUB/acessibilidade/releases/latest" 
-                   class="btn-download" 
-                   aria-label="Descarregar APK da aplicação DocReader">
-                    Descarregar DocReader (APK)
-                </a>
+                <div class="btn-group">
+                    <a href="https://raw.githubusercontent.com/Ruivital/acessibilidade/main/DocReader.apk" 
+                       download="DocReader.apk"
+                       class="btn-download" 
+                       aria-label="Descarregar APK da aplicação DocReader">
+                        Descarregar DocReader (APK)
+                    </a>
+                    <a href="https://raw.githubusercontent.com/Ruivital/acessibilidade/main/DocReader_Android_Completo.zip" 
+                       download="DocReader_Android_Completo.zip"
+                       class="btn-secondary" 
+                       aria-label="Descarregar projeto completo do DocReader em ZIP">
+                        Código-fonte completo (ZIP)
+                    </a>
+                </div>
             </article>
         </section>
 
@@ -292,10 +329,11 @@
     <footer>
         <p>Projeto aberto para apoio à comunidade e associações de baixa visão.</p>
         <p>
-            <a href="https://github.com/SEU_UTILIZADOR_GITHUB/acessibilidade" target="_blank" rel="noopener noreferrer">
-                Ver código-fonte e versões no GitHub
+            <a href="https://github.com/Ruivital/acessibilidade" target="_blank" rel="noopener noreferrer">
+                Ver repositório no GitHub
             </a>
         </p>
     </footer>
 </body>
+</html>
 </html>
