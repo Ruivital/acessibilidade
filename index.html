@@ -1,20 +1,382 @@
-<!-- Botão LupaAcessível -->
-<a href="https://github.com/Ruivital/acessibilidade/raw/refs/heads/main/LupaAcessivel_Source.zip" 
-   class="btn-download" 
-   aria-label="Descarregar código-fonte da aplicação LupaAcessível em formato ZIP">
-    Descarregar LupaAcessível (ZIP)
-</a>
 
-<!-- Botão DocReader APK -->
-<a href="https://github.com/Ruivital/acessibilidade/raw/refs/heads/main/DocReader.apk" 
-   class="btn-download" 
-   aria-label="Descarregar APK da aplicação DocReader">
-    Descarregar DocReader (APK)
-</a>
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicações Android gratuitas e acessíveis para pessoas com deficiência visual: LupaAcessível e DocReader.">
+    <title>Acessibilidade Android — LupaAcessível & DocReader</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --accent-yellow: #facc15;
+            --accent-yellow-hover: #fde047;
+            --text-on-yellow: #090d16;
+            --accent-blue: #38bdf8;
+            --border-color: #475569;
+            --focus-ring: #ffffff;
+        }
 
-<!-- Botão DocReader ZIP -->
-<a href="https://github.com/Ruivital/acessibilidade/raw/refs/heads/main/DocReader_Android_Completo.zip" 
-   class="btn-secondary" 
-   aria-label="Descarregar projeto completo do DocReader em ZIP">
-    Código-fonte completo (ZIP)
-</a>
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #f8fafc;
+                --bg-card: #ffffff;
+                --text-primary: #0f172a;
+                --text-secondary: #334155;
+                --accent-yellow: #1d4ed8;
+                --accent-yellow-hover: #1e40af;
+                --text-on-yellow: #ffffff;
+                --accent-blue: #0369a1;
+                --border-color: #cbd5e1;
+                --focus-ring: #0f172a;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.65;
+            font-size: 1.125rem;
+            padding: 1.5rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            background: var(--accent-yellow);
+            color: var(--text-on-yellow);
+            padding: 0.75rem 1.25rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+            outline: 3px solid var(--focus-ring);
+        }
+
+        header, main, footer {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 2rem 0 2.5rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 70ch;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .app-card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-badge {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .app-card h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+            color: var(--accent-blue);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 3.5rem;
+            padding: 0.875rem 1.5rem;
+            background-color: var(--accent-yellow);
+            color: var(--text-on-yellow);
+            font-size: 1.125rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            border: 2px solid transparent;
+            transition: background-color 0.15s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-yellow-hover);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 3.25rem;
+            padding: 0.75rem 1.25rem;
+            background-color: transparent;
+            color: var(--accent-blue);
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            border: 2px solid var(--accent-blue);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(56, 189, 248, 0.12);
+        }
+
+        .btn-download:focus-visible,
+        .btn-secondary:focus-visible {
+            outline: 4px solid var(--focus-ring);
+            outline-offset: 3px;
+        }
+
+        .install-guide {
+            background-color: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .install-guide h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .install-guide ol {
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .install-guide li {
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            border-top: 2px solid var(--border-color);
+            padding-top: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        footer a:focus-visible {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#conteudo-principal" class="skip-link">Saltar para o conteúdo principal</a>
+
+    <header>
+        <h1>Ferramentas de Acessibilidade</h1>
+        <p class="subtitle">
+            Aplicações Android gratuitas, sem publicidade e totalmente offline, desenhadas para promover a autonomia na leitura e ampliação visual.
+        </p>
+    </header>
+
+    <main id="conteudo-principal">
+        <section aria-label="Aplicações disponíveis" class="apps-grid">
+            <!-- Cartão LupaAcessível -->
+            <article class="app-card" aria-labelledby="titulo-lupa">
+                <div>
+                    <span class="app-badge">Android • Ampliação Visual</span>
+                    <h2 id="titulo-lupa">LupaAcessível</h2>
+                    <p>
+                        Transforma a câmara do telemóvel numa lupa digital de resposta rápida, ideal para ler rótulos, bulas de medicamentos, faturas e letras pequenas.
+                    </p>
+                    <ul class="features-list">
+                        <li>Ampliação fluida com controlos grandes e táteis</li>
+                        <li>Filtros de alto contraste e inversão de cores</li>
+                        <li>Lanterna integrada e congelamento de imagem</li>
+                        <li>Compatível com TalkBack e navegação simplificada</li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="LupaAcessivel.apk" 
+                       data-file="LupaAcessivel.apk"
+                       download="LupaAcessivel.apk"
+                       class="btn-download download-link" 
+                       aria-label="Descarregar aplicação LupaAcessível para Android (APK)">
+                        Descarregar LupaAcessível (APK)
+                    </a>
+                    <a href="LupaAcessivel_Source.zip" 
+                       data-file="LupaAcessivel_Source.zip"
+                       download="LupaAcessivel_Source.zip"
+                       class="btn-secondary download-link" 
+                       aria-label="Descarregar código-fonte da LupaAcessível em formato ZIP">
+                        Código-fonte LupaAcessível (ZIP)
+                    </a>
+                </div>
+            </article>
+
+            <!-- Cartão DocReader -->
+            <article class="app-card" aria-labelledby="titulo-docreader">
+                <div>
+                    <span class="app-badge">Android • Leitura e OCR</span>
+                    <h2 id="titulo-docreader">DocReader</h2>
+                    <p>
+                        Leitor inteligente de documentos físicos e ficheiros digitais que extrai texto instantaneamente e faz leitura em voz alta em português.
+                    </p>
+                    <ul class="features-list">
+                        <li>Reconhecimento ótico de texto (OCR) offline de alta precisão</li>
+                        <li>Leitura por síntese de voz (TTS) com controlo de velocidade</li>
+                        <li>Suporte para captura por câmara, imagens e PDFs</li>
+                        <li>Interface limpa focada em acessibilidade total</li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="DocReader.apk" 
+                       data-file="DocReader.apk"
+                       download="DocReader.apk"
+                       class="btn-download download-link" 
+                       aria-label="Descarregar aplicação DocReader para Android (APK)">
+                        Descarregar DocReader (APK)
+                    </a>
+                    <a href="DocReader_Android_Completo.zip" 
+                       data-file="DocReader_Android_Completo.zip"
+                       download="DocReader_Android_Completo.zip"
+                       class="btn-secondary download-link" 
+                       aria-label="Descarregar projeto completo do DocReader em ZIP">
+                        Código-fonte DocReader (ZIP)
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <section class="install-guide" aria-labelledby="titulo-instalacao">
+            <h2 id="titulo-instalacao">Como instalar no telemóvel Android</h2>
+            <ol>
+                <li>Toque no botão <strong>Descarregar (APK)</strong> da aplicação pretendida acima e transfira o ficheiro.</li>
+                <li>Abra a notificação de transferência concluída ou procure o ficheiro na aplicação <strong>Ficheiros / Transferências</strong>.</li>
+                <li>Se o Android solicitar permissão pela primeira vez, toque em <strong>Definições</strong> e ative a opção <strong>Permitir desta fonte</strong>.</li>
+                <li>Toque em <strong>Instalar</strong> e aguarde alguns segundos até a aplicação ficar pronta a usar.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto aberto para apoio à comunidade e associações de baixa visão.</p>
+        <p>
+            <a href="https://github.com/Ruivital/acessibilidade" target="_blank" rel="noopener noreferrer">
+                Ver repositório no GitHub
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        // Garante que o download funciona mesmo se o GitHub Pages bloquear ficheiros binários grandes
+        document.querySelectorAll('.download-link').forEach(function (link) {
+            link.addEventListener('click', async function (e) {
+                const fileName = link.getAttribute('data-file');
+                const localUrl = link.getAttribute('href');
+                const githubRawUrl = 'https://raw.githubusercontent.com/Ruivital/acessibilidade/main/' + encodeURIComponent(fileName);
+
+                e.preventDefault();
+
+                try {
+                    const response = await fetch(localUrl, { method: 'HEAD' });
+                    if (response.ok) {
+                        const a = document.createElement('a');
+                        a.href = localUrl;
+                        a.download = fileName;
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                        return;
+                    }
+                } catch (_) {
+                    // Continua para o fallback direto do GitHub
+                }
+
+                // Fallback automático para raw.githubusercontent.com
+                window.location.href = githubRawUrl;
+            });
+        });
+    </script>
+</body>
+</html>
